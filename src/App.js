@@ -1,25 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { TextField, Grid, Button, FormControl, Input, InputLabel, FormHelperText } from '@material-ui/core';
+import { addData, auth, signInWithGoogle, generateUserDocument } from './firebase';
+import { Router } from "@reach/router";
+import SignIn from "./components/SignIn";
+import Register from "./components/Register";
+import Application from "./components/Application";
+import UserProvider from "./providers/UserProvider";
+import TransferMoney from "./components/TransferMoney";
+import { UserContext } from "./providers/UserProvider";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <Application />
+      <footer style={{ position: "fixed", bottom: '5%', right: '5%' }}>Developed by <a href="https://github.com/atisayajain">atisayajain</a></footer>
+    </UserProvider>
   );
 }
 
